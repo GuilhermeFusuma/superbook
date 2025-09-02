@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Heróis</title>
+</head>
+<body>
+    {% include "partials/menu.html" %}
+
+    <h1>Heróis cadastrados</h1>
+    <ul>
+        {% for hero in herois %}
+            <li>{{ hero.codinome }} - {{ hero.poder_principal }}</li>
+
+        {% if hero.cidade == "Nova York" %}
+            <p>Este herói protege Nova York!</p>
+        {% else %}
+            <p>Herói de outra cidade.</p>
+        {% endif %}
+
+        {% empty %}
+            <li>Nenhum herói cadastrado.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
