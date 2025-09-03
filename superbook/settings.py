@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # apps do superbook
     'heroes',
     'posts',
+
+    #apps de terceiros
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

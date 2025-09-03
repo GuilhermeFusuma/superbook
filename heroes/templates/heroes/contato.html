@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Contato{% endblock %}
 
 {% block content %}
@@ -7,7 +9,8 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ forma.as_p }}
-    <button type="submit"class="btn btn-primary">Enviar</button>
+
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 {% endblock %}

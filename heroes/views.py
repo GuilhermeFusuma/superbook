@@ -15,15 +15,15 @@ class HeroListView(ListView):
     context_object_name = "herois"
 
 def contato_view(request):
-    form = ContactForm()
-
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
 
             print(form.cleaned_data)
             return render(request, "heroes/contato_sucesso.html")
-    
+    else:
+        form = ContactForm()
+
     return render(request, "heroes/contato.html", {"form": form})
 
 def criar_heroi(request):
