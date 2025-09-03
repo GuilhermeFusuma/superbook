@@ -19,6 +19,15 @@
       "message": "Bem-vindo ao SuperBook!",
       "date_of_creation": "2025-07-20T12:00:00Z"
     }
+  },
+  {
+    "model": "posts.FactPost",
+    "pk": 2,
+    "fields": {
+      "author": 1,
+      "message": "Nova missão no central park!",
+      "date_of_creation": "2025-08-20T12:00:00Z"
+    }
   }
 ]
 
