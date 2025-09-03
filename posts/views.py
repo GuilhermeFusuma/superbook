@@ -1,6 +1,7 @@
 from django.views.generic import ListView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import FactPost
+from .forms import PostForm
 
 # Feito por Guilherme Fusuma
 
@@ -13,3 +14,16 @@ class PostsLista(ListView):
     model = FactPost
     template_name = "posts/lista_posts.html"
     context_object_name = "posts"
+
+def criar_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES) # quando o formulário pede arquivos o request.FILES é necessário
+
+        if form.is_valid():
+            form.save()
+            return redirect('lista_posts')
+       
+    else:
+        form = PostForm()
+
+    return render(request, 'posts/form_post.html', {"form": form})
