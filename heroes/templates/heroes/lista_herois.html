@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Lista de Heróis{% endblock %}
@@ -6,20 +5,15 @@
 {% block content %}
 <h2 class="mb-4">Heróis cadastrados</h2>
 
-<div class="row">
-{% for hero in herois %}
-  <div class="col-md-4">
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">{{ hero.code_name }}</h5>
-        <p class="card-text">{{ hero.power }}</p>
-        <small class="text-muted">{{ hero.city }}</small>
-      </div>
-    </div>
+<div class="list-group">
+  {% for hero in herois %}
+  <div class="list-group-item">
+    <h5>{{ hero.codinome }}</h5>
+    <p>{{ hero.poder }}</p>
+    <small class="text-muted">{{ hero.cidade }}</small>
   </div>
-{% empty %}
+  {% empty %}
   <p>Nenhum herói encontrado.</p>
-{% endfor %}
+  {% endfor %}
 </div>
 {% endblock %}
-

@@ -1,32 +1,32 @@
 [
   {
-    "model": "heroes.DimHero",
+    "model": "heroes.Hero",
     "pk": 1,
     "fields": {
-      "code_name": "Acorn",
-      "real_name": "Desconhecido",
-      "power": "Superinteligência",
-      "city": "Nova York",
-      "history": "Um esquilo que luta contra o crime.",
-      "date_of_creation": "2025-07-20T12:00:00Z"
+      "codinome": "Acorn",
+      "nome_real": "Desconhecido",
+      "poder": "Superinteligência",
+      "cidade": "Nova York",
+      "historia": "Um esquilo que luta contra o crime.",
+      "data_criacao": "2025-07-20T12:00:00Z"
     }
   },
   {
-    "model": "posts.FactPost",
+    "model": "posts.Post",
     "pk": 1,
     "fields": {
-      "author": 1,
-      "message": "Bem-vindo ao SuperBook!",
-      "date_of_creation": "2025-07-20T12:00:00Z"
+      "autor": 1,
+      "mensagem": "Bem-vindo ao SuperBook!",
+      "data_criacao": "2025-07-20T12:00:00Z"
     }
   },
   {
-    "model": "posts.FactPost",
+    "model": "posts.Post",
     "pk": 2,
     "fields": {
-      "author": 1,
-      "message": "Nova missão no central park!",
-      "date_of_creation": "2025-08-20T12:00:00Z"
+      "autor": 1,
+      "mensagem": "Nova missão no central park!",
+      "data_criacao": "2025-08-20T12:00:00Z"
     }
   }
 ]

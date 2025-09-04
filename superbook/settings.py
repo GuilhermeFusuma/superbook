@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     #apps de terceiros
     'crispy_forms',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

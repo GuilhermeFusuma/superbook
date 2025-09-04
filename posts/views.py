@@ -1,17 +1,17 @@
 from django.views.generic import ListView
 from django.shortcuts import render, redirect
-from .models import FactPost
+from .models import Post
 from .forms import PostForm
 
 # Feito por Guilherme Fusuma
 
 # Create your views here.
 def lista_posts(request):
-    posts = FactPost.objects.all()
+    posts = Post.objects.all()
     return render(request, "posts/lista_posts.html", {"posts": posts})
 
 class PostsLista(ListView):
-    model = FactPost
+    model = Post
     template_name = "posts/lista_posts.html"
     context_object_name = "posts"
 

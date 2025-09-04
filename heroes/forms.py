@@ -1,5 +1,5 @@
 from django import forms
-from .models import DimHero
+from .models import Hero
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True, label="Seu nome")
@@ -8,6 +8,12 @@ class ContactForm(forms.Form):
 
 class HeroForm(forms.ModelForm):
     class Meta:
-        model = DimHero
-        fields = ['code_name', 'real_name', 'power', 'city', 'history']
+        model = Hero
+        fields = ['codinome', 'nome_real', 'poder', 'cidade', 'historia']
                   
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Itera sobre todos os campos do formulário
+        for field_name, field in self.fields.items():
+            # Adiciona a classe 'form-control' a cada um deles
+            field.widget.attrs['class'] = 'form-control'
