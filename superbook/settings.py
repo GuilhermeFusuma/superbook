@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     # apps do superbook
     'heroes',
     'posts',
-
+    'villains',
+    
     #apps de terceiros
     'crispy_forms',
     'widget_tweaks',
