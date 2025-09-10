@@ -25,5 +25,9 @@ urlpatterns = [
     path('posts/', include('posts.urls')),
 ]
 
+admin.site.site_header = "SuperBook Admin"
+admin.site.site_title = "SuperBook Painel"
+admin.site.index_title = "Bem-vindo ao SuperBook"
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
