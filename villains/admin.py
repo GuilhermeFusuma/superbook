@@ -14,5 +14,10 @@ class VillainAdmin(admin.ModelAdmin):
         }),
         ('Informações Gerais', {
             'fields': ('poder', 'cidade', 'historia', 'visto_por_ultimo')
+        }),
+        ('Dados de Registro', {
+            'fields': ('data_criacao',)
         })
     )
+
+    readonly_fields = ['criado_em']
