@@ -8,7 +8,7 @@ class Hero(models.Model):
     cidade = models.CharField(max_length=100)
     historia = models.TextField(blank=True, null=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
-    email_contato = models.CharField(max_length=100, null=False)
+    email_contato = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return self.codinome

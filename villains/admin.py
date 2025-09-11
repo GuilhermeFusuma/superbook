@@ -10,12 +10,9 @@ class VillainAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Identidade Secreta', {
-            'fields': ('codinome', 'nome_real', 'email_contato')
+            'fields': ('codinome', 'nome_real')
         }),
         ('Informações Gerais', {
-            'fields': ('poder', 'cidade', 'historia')
-        }),
-        ('Dados de Registro', {
-            'fields': ('data_criacao',)
+            'fields': ('poder', 'cidade', 'historia', 'visto_por_ultimo')
         })
     )
