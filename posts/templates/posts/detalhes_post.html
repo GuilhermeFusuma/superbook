@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes do Post{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Post de {{ post.autor.codinome }}</h2>
+  {% if post.imagem %}
+  <img src="{{ post.imagem.url }}" class="img-fluid" alt="Imagem do Post">
+  {% endif %}
+  <p>{{ post.mensagem }}</p>
+  <small class="text-muted">{{ post.data_criacao|date:"d/m/Y H:i" }}</small>
+</div>
+<hr>
+<div class="container mt-4">
+  <h3>Comentários</h3>
+  <h4>Adicionar Comentário</h6>
+    <form action="{% url 'salvar_comentario' post.pk %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    {% if comentarios %}
+    <ul class="list-group">
+      {% for comentario in comentarios %}
+      <li class="list-group-item">
+        <strong>{{ comentario.autor.codinome }}:</strong> {{ comentario.texto }}
+        <br>
+        <small class="text-muted">{{ comentario.data }}</small>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nenhum comentário encontrado.</p>
+    {% endif %}
+</div>
+{% endblock %}

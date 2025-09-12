@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('heroes/', include('heroes.urls')),
     path('posts/', include('posts.urls')),
+    path('comments/', include('comments.urls')),
 ]
 
 admin.site.site_header = "SuperBook Admin"

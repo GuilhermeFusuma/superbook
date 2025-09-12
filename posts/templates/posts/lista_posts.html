@@ -13,8 +13,8 @@
     {% endif %}
     <div class="card-body">
       <h5 class="card-title">{{ post.autor.codinome }}</h5>
-      <p class="card-text">{{ post.mensagem }}</p>
-      <small class="text-muted">{{ post.data_criacao|date:"d/m/Y H:i" }}</small>
+      <p class="card-text"><a href="{% url 'detalhes_post' post.pk %}">{{ post.mensagem }}</a></p>
+      <small class="text-muted">{{ post.data_criacao|date:"d/m/Y" }}</small>
       <div class="mt-2">
         <a href="{% url 'editar_post' post.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
         <a href="{% url 'excluir_post' post.pk %}" class="btn btn-sm btn-outline-danger">Excluir</a>

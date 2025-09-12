@@ -1,8 +1,11 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from comments.models import Comentario
+from comments.forms import ComentarioForm
 from .models import Post
 from .forms import PostForm
+
 
 # Create your views here.
 class PostListView(ListView):
@@ -26,3 +29,14 @@ class PostDeleteView(DeleteView):
     model = Post
     template_name = 'posts/confirmar_exclusao.html'
     success_url = reverse_lazy('lista_posts')
+
+def post_detalhes(request, pk):
+    post = Post.objects.get(id=pk)
+    comentarios = Comentario.objects.filter(post=post)
+    form = ComentarioForm()
+
+    return render(request, 'posts/detalhes_post.html', {
+        'post': post,
+        'comentarios': comentarios,
+        'form': form
+    })
