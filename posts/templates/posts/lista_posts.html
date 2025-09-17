@@ -12,8 +12,9 @@
     <img src="{{ post.imagem.url }}" class="card-img-top" alt="...">
     {% endif %}
     <div class="card-body">
-      <h5 class="card-title">{{ post.autor.codinome }}</h5>
-      <p class="card-text"><a href="{% url 'detalhes_post' post.pk %}">{{ post.mensagem }}</a></p>
+      <a href="{% url 'detalhes_post' post.pk %}" class="text-dark text-decoration-none">
+        <strong>{{ post.autor.codinome }}</strong><br>
+        {{ post.mensagem|linebreaksbr }} </a>
       <small class="text-muted">{{ post.data_criacao|date:"d/m/Y" }}</small>
       <div class="mt-2">
         <a href="{% url 'editar_post' post.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>

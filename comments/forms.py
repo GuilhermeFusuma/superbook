@@ -5,6 +5,8 @@ class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['texto', 'autor']
+        labels = {'texto': 'Comentário'}
+        widgets = {'texto': forms.Textarea(attrs={'rows': 3})}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
