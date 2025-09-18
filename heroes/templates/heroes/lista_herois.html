@@ -4,7 +4,7 @@
 
 {% block content %}
 <h2 class="mb-4">Heróis cadastrados</h2>
-
+<a href="{% url 'criar_heroi' %}" class="btn btn-success mb-3">Novo Herói</a>
 <div class="list-group">
   {% for hero in herois %}
   <div class="list-group-item">

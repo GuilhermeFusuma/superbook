@@ -4,7 +4,7 @@
 
 {% block content %}
 <h2 class="mb-4">Posts do SuperBook</h2>
-
+<a href="{% url 'novo_post' %}" class="btn btn-success mb-3">Novo Post</a>
 <div class="list-group">
   {% for post in posts %}
   <div class="card" style="width: 18rem;">

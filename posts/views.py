@@ -1,5 +1,5 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from comments.models import Comentario
 from comments.forms import ComentarioForm
@@ -31,8 +31,8 @@ class PostDeleteView(DeleteView):
     success_url = reverse_lazy('lista_posts')
 
 def post_detalhes(request, pk):
-    post = Post.objects.get(id=pk)
-    comentarios = Comentario.objects.filter(post=post)
+    post = get_object_or_404(Post, pk=pk)
+    comentarios = post.comentarios.all()
     form = ComentarioForm()
 
     return render(request, 'posts/detalhes_post.html', {

@@ -20,18 +20,14 @@
       {{ form.as_p }}
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
-    {% if comentarios %}
-    <ul class="list-group">
-      {% for comentario in comentarios %}
-      <li class="list-group-item">
-        <strong>{{ comentario.autor.codinome }}:</strong> {{ comentario.texto }}
-        <br>
+    {% for comentario in comentarios %}
+      <div class="mb-2">
+        <p>{{ comentario.texto }}</p>
         <small class="text-muted">{{ comentario.data }}</small>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>Seja o primeiro a comentar!</p>
-    {% endif %}
+        <hr>
+      </div>
+    {% empty %}
+      <p>Seja o primeiro a comentar!</p>
+    {% endfor %}
 </div>
 {% endblock %}
