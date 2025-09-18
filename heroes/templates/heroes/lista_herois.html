@@ -8,6 +8,9 @@
 <div class="list-group">
   {% for hero in herois %}
   <div class="list-group-item">
+    {% if hero.imagem %}
+      <img src="{{ hero.imagem.url }}" class="profile-pic me-3" alt="">
+    {% endif %}
     <h5>{{ hero.codinome }}</h5>
     <p>{{ hero.poder }}</p>
     <small class="text-muted">{{ hero.cidade }}</small>

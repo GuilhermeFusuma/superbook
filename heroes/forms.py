@@ -9,7 +9,7 @@ class ContactForm(forms.Form):
 class HeroForm(forms.ModelForm):
     class Meta:
         model = Hero
-        fields = ['codinome', 'nome_real', 'poder', 'cidade', 'historia']
+        fields = ['imagem', 'codinome', 'nome_real', 'poder', 'cidade', 'historia']
                   
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

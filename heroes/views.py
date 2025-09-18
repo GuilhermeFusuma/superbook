@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 from .models import Hero
 from .forms import ContactForm, HeroForm
 
@@ -26,13 +27,8 @@ def contato_view(request):
 
     return render(request, "heroes/contato.html", {"form": form})
 
-def criar_heroi(request):
-    if request.method == "POST":
-        form = HeroForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('lista_herois')
-    else:
-        form = HeroForm()
-
-    return render(request, "heroes/form_heroi.html", {"form": form})
+class HeroCreateView(CreateView):
+    model = Hero
+    form_class = HeroForm
+    template_name = 'heroes/form_heroi.html'
+    success_url = reverse_lazy('lista_herois')

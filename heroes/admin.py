@@ -1,22 +1,21 @@
 from django.contrib import admin
 from .models import Hero
 
-# Register your models here.
 @admin.register(Hero)
 class HeroAdmin(admin.ModelAdmin):
-    list_display = ['codinome', 'nome_real', 'poder', 'cidade', 'data_criacao', 'email_contato'] # campos exibidos
-    list_filter = ['cidade'] # campos para serem filtrados
-    search_fields = ['codinome', 'nome_real', 'cidade', 'email_contato'] # campos que podem ser pesquisados
+    list_display = ('codinome', 'cidade', 'data_criacao')
+    search_fields = ('codinome', 'nome_real', 'cidade')
+    readonly_fields = ('data_criacao',)
 
-    fieldsets = ( # divide os campos em várias seções
+    fieldsets = (
         ('Identidade Secreta', {
-            'fields': ('codinome', 'nome_real', 'email_contato')
+        'fields': ('codinome', 'nome_real'),
         }),
         ('Informações Gerais', {
-            'fields': ('poder', 'cidade', 'historia')
+        'fields': ('poder', 'cidade', 'email_contato', 'historia', 'imagem'),
         }),
         ('Dados de Registro', {
-            'fields': ('data_criacao',)
+        'fields': ('data_criacao',),
+        'classes': ('collapse',),
         }),
     )
-    readonly_fields = ['data_criacao']
