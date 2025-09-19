@@ -1,7 +1,33 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Lista de Vilões
+{% endblock title %}
 
 {% block content %}
-  <h1>Vilões</h1>
-  <p>Em breve: CRUD de vilões.</p>
-{% endblock %}
-
+<h2 class="mb-4">Vilões cadastrados</h2>
+<div class="row">
+  {% for vilao in viloes %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        {% if vilao.imagem %}
+        <img src="{{ vilao.imagem.url }}" class="profile-pic" alt="{{ vilao.codinome }}">
+        {% else %}
+        <img src="{% static 'default_profile.png' %}" alt="Default Profile" class="profile-pic">
+        {% endif %}
+        <h5 class="card-title">{{ vilao.codinome }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ vilao.nome_real }}</h6>
+        <p class="card-text">{{ vilao.poder }}</p>
+        <h6 class="card-subtitle">Visto por último:</h6>
+        <small class="text-muted">{{ vilao.visto_por_ultimo }}</small>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>Nenhum vilão encontrado.</p>
+  {% endfor %}
+</div>
+<script src="{% static 'js/viloes.js' %}"></script>
+{% endblock content %}

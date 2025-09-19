@@ -13,6 +13,9 @@ class PostListView(ListView):
     template_name = 'posts/lista_posts.html'
     context_object_name = 'posts'
 
+    def get_queryset(self):
+        return Post.objects.all().order_by('-data_criacao')
+
 class PostCreateView(CreateView):
     model = Post
     form_class = PostForm

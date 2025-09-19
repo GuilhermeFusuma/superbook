@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Villain
 
-def lista_viloes(request):
-    return render(request, 'villains/lista_viloes.html')
+class VillainListView(ListView):
+    model = Villain
+    template_name = 'villains/lista_viloes.html'
+    context_object_name = 'viloes'
 

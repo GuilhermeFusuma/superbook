@@ -7,22 +7,45 @@
 <a href="{% url 'novo_post' %}" class="btn btn-success mb-3">Novo Post</a>
 
 {% for post in posts %}
-  <div class="mb-3 d-flex align-items-center">
+<div class="card mb-4">
+  <!-- Cabeçalho do post -->
+  <div class="card-header d-flex align-items-center">
     {% if post.autor.imagem %}
-      <img src="{{ post.autor.imagem.url }}" class="profile-pic" alt="">
+    <img src="{{ post.autor.imagem.url }}" class="rounded-circle me-2" alt="Imagem do Autor" width="40" height="40">
+    {% else %}
+    <img src="{% static 'logo.png' %}" class="rounded-circle me-2" alt="Default Profile" width="40"
+      height="40">
     {% endif %}
-    <div>
-      <a href="{% url 'detalhe_post' post.pk %}" class="text-dark text-decoration-none">
-        <strong>{{ post.autor.codinome }}</strong><br>
-        {{ post.mensagem|linebreaksbr }}
-      </a>
-      <div class="mt-2">
-        <a href="{% url 'editar_post' post.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
-        <a href="{% url 'excluir_post' post.pk %}" class="btn btn-sm btn-outline-danger">Excluir</a>
+    <h5 class="mb-0">{{ post.autor.codinome }}</h5>
+  </div>
+
+  <!-- Corpo do post -->
+  <div class="card-body p-0">
+    {% if post.imagem %}
+    <div class="p-5">
+      <img src="{{ post.imagem.url }}" class="card-img-top" alt="Imagem do Post">
+    </div>
+    {% endif %}
+    <div class="p-3">
+      <p class="card-text">{{ post.mensagem }}</p>
+      <hr>
+      <h6>Comentários</h6>
+      <div class="overflow-y-scroll">
+        {% for comentario in post.comentarios.all %}
+        <div class="mb-2">
+          <strong>{{ comentario.autor.codinome }}:</strong> {{ comentario.texto }}
+        </div>
+        {% empty %}
+        <p class="text-muted">Nenhum comentário ainda.</p>
+        {% endfor %}
       </div>
     </div>
   </div>
+  <!-- Link para detalhes do post -->
+  <a href="{% url 'detalhe_post' post.id %}" class="stretched-link"></a>
+</div>
 {% empty %}
-  <p>Nenhum post encontrado.</p>
+<p>Nenhum post encontrado.</p>
 {% endfor %}
-{% endblock %}
+
+{% endblock content %}

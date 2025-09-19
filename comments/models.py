@@ -6,5 +6,5 @@ from heroes.models import Hero
 class Comentario(models.Model):
     texto = models.TextField(null=False, blank=False)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, blank=False, related_name="comentarios")
-    # autor = models.ForeignKey(Hero, on_delete=models.CASCADE, null=True, blank=True)
+    autor = models.ForeignKey(Hero, on_delete=models.CASCADE, null=True, blank=True)
     data = models.DateField(auto_now_add=True)

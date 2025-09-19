@@ -1,22 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Lista de Heróis{% endblock %}
+{% block title %}
+Lista de Heróis
+{% endblock title %}
 
 {% block content %}
 <h2 class="mb-4">Heróis cadastrados</h2>
 <a href="{% url 'criar_heroi' %}" class="btn btn-success mb-3">Novo Herói</a>
-<div class="list-group">
+<div class="row">
   {% for hero in herois %}
-  <div class="list-group-item">
-    {% if hero.imagem %}
-      <img src="{{ hero.imagem.url }}" class="profile-pic me-3" alt="">
-    {% endif %}
-    <h5>{{ hero.codinome }}</h5>
-    <p>{{ hero.poder }}</p>
-    <small class="text-muted">{{ hero.cidade }}</small>
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        {% if hero.imagem %}
+        <img src="{{ hero.imagem.url }}" class="profile-pic" alt="{{ hero.codinome }}">
+        {% else %}
+        <img src="{% static 'default_profile.png' %}" alt="Default Profile" class="profile-pic">
+        {% endif %}
+        <h5 class="card-title">{{ hero.codinome }}</h5>
+        <p class="card-text">{{ hero.poder }}</p>
+        <small class="text-muted">{{ hero.cidade }}</small>
+      </div>
+    </div>
   </div>
   {% empty %}
   <p>Nenhum herói encontrado.</p>
   {% endfor %}
 </div>
-{% endblock %}
+
+{% endblock content %}

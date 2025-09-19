@@ -18,13 +18,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from posts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('heroes/', include('heroes.urls')),
     path('posts/', include('posts.urls')),
     path('comments/', include('comments.urls')),
-    path('villains/', include('villains.urls'))
+    path('villains/', include('villains.urls')),
+    path('', views.PostListView.as_view(), name='home'),
 ]
 
 admin.site.site_header = "SuperBook Admin"
