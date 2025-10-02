@@ -1,0 +1,14 @@
+{% extends "villains/base_villains.html" %}
+{% block content %}
+<div class="viloes-root">
+  <h1 class="mb-3">{{ villain.codinome }}</h1>
+  <p><strong>Nome real:</strong> {{ villain.nome_real|default:"—" }}</p>
+  <p><strong>Poder principal:</strong> {{ villain.poder|default:"—" }}</p>
+  <p><strong>Cidade:</strong> {{ villain.cidade|default:"—" }}</p>
+  <p><strong>História:</strong><br>{{ villain.historia|linebreaksbr }}</p>
+
+  <a href="{% url 'editar_vilao' villain.pk %}" class="btn btn-danger">Editar</a>
+  <a href="{% url 'lista_viloes' %}" class="btn btn-outline-secondary ms-2">Voltar</a>
+</div>
+{% endblock %}
+
