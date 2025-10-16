@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-s(gtl5%7$$4s1=%d8mqgj73t^=7tcizkzv@nmw^3tnow%m-m#3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,14 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    # Sites (obrigatório para allauth) # ***** NÃO ESQUECER!!!!! ****
-    'django.contrib.sites',    # ***** ATENÇÃO ! NÃO ESQUECER DO SITES !!!!! ****
-
     # apps do superbook
     'heroes',
     'posts',
     'villains',
     'comments',
+
+    # Sites (obrigatório para allauth) # ***** NÃO ESQUECER!!!!! ****
+    'django.contrib.sites',    # ***** ATENÇÃO ! NÃO ESQUECER DO SITES !!!!! ****
     
     # allauth
     'allauth', 
@@ -132,8 +132,9 @@ LOGOUT_REDIRECT_URL = 'lista_posts'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

@@ -1,8 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Hero(models.Model):
-    codinome = models.CharField(max_length=50, unique=True)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='hero', null=True, blank=True) 
+
+    codinome = models.CharField(max_length=50, unique=True, blank=True, null=True)
     nome_real = models.CharField(max_length=100, blank=True, null=True)
     poder = models.CharField(max_length=100)
     cidade = models.CharField(max_length=100)
