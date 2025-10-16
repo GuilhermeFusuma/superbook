@@ -22,11 +22,13 @@ from posts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),  # login/logout/signup + Google
     path('heroes/', include('heroes.urls')),
     path('posts/', include('posts.urls')),
     path('comments/', include('comments.urls')),
     path('villains/', include('villains.urls')),
     path('', views.PostListView.as_view(), name='home'),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
 
 admin.site.site_header = "SuperBook Admin"
